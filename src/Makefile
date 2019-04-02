@@ -22,7 +22,6 @@ AFILE = eduardo.a
 define copy_build
 	mkdir -p ../$(TARGET)
 	mv -u $(BFILE) ../$(TARGET)
-	cp -u data/* ../$(TARGET)
 endef
 
 .PHONY: all
