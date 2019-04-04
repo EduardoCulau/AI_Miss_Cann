@@ -10,10 +10,10 @@ TAG    = ctags
 CC     = g++ -std=c++11 $(OPT) $(WFLAG) $(CFLAG) -I.
 
 CC_OBJS = main.o
+INFRA_OBJS = infra/db.o
 #IO_OBJS = io/io.o io/lef.o io/def.o io/rpt.o io/guide.o io/weight.o
-#DB_OBJS = db/db.o db/net.cpp #db/guide.o
 
-OBJS = $(CC_OBJS) #$(IO_OBJS) $(DB_OBJS)
+OBJS = $(CC_OBJS) $(INFRA_OBJS)
 
 SRCS = ${OBJS:%.o=%.cpp}
 BFILE = eduardo
@@ -42,9 +42,10 @@ $(BFILE): $(OBJS)
 .PHONY: clean
 clean:
 	$(RM) -f */*.o *.o
-	$(RM) -f $(BFILE) $(AFILE) core.*
+	$(RM) -f $(BFILE) $(AFILE)
 
 .PHONY: cleanall
 cleanall:
 	$(RM) -f */*.o *.o
-	$(RM) -f $(BFILE) $(AFILE) core.*
+	$(RM) -f $(BFILE) $(AFILE)
+	$(RM) -f ../$(TARGET)/$(BFILE)

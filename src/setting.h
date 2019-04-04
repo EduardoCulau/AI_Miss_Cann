@@ -16,9 +16,9 @@ public:
         return _instance;
     }
 
-    static const int& missionaries () { return get()->_missionaries; }
-    static const int& cannibals    () { return get()->_missionaries; }
-    static const int& boatCapacity () { return get()->_missionaries; }
+    static const elem_t missionaries () { return get()->_missionaries; }
+    static const elem_t cannibals    () { return get()->_cannibals;    }
+    static const elem_t boatCapacity () { return get()->_boatCapacity; }
 
     static void missionaries (int miss) { get()->_missionaries = miss; }
     static void cannibals    (int cann) { get()->_cannibals    = cann; }
@@ -60,7 +60,7 @@ public:
 
     //Parse the entries.
     static bool parseEntries(){
-        bool valid;
+        bool valid = true;
 
         if( Setting::getHelp() ){
             std::cout<<"    Program Argumments  "<<std::endl
@@ -101,10 +101,10 @@ private:
     static void setHelp    () { get()->_help = true; }
     static bool getHelp    () { return get()->_help; }
 
-    int  _missionaries = -1;
-    int  _cannibals    = -1;
-    int  _boatCapacity = -1;
-    bool _help         =  false;
+    elem_t  _missionaries = 0;
+    elem_t  _cannibals    = 0;
+    elem_t  _boatCapacity = 0;
+    bool _help            = false;
 };
 
 Setting *Setting::_instance = 0;

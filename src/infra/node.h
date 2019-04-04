@@ -1,5 +1,5 @@
-#ifndef _NODE_H_
-#define _NODE_H_
+#ifndef _INFRA_NODE_H_
+#define _INFRA_NODE_H_
 
 
 namespace ai {
