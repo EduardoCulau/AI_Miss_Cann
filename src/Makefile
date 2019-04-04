@@ -10,7 +10,7 @@ TAG    = ctags
 CC     = g++ -std=c++11 $(OPT) $(WFLAG) $(CFLAG) -I.
 
 CC_OBJS = main.o
-INFRA_OBJS = infra/db.o
+INFRA_OBJS = infra/db.o infra/state.o
 #IO_OBJS = io/io.o io/lef.o io/def.o io/rpt.o io/guide.o io/weight.o
 
 OBJS = $(CC_OBJS) $(INFRA_OBJS)
@@ -31,9 +31,8 @@ all: $(BFILE)
 install: $(BFILE)
 	$(call copy_build)
 
-#$(BFILE): $(DEF_OBJS) $(LEF_OBJS) $(OBJS)
 $(BFILE): $(OBJS)
-	$(CC) -o $(BFILE) $(OBJS) $(LIB_OBJS)
+	$(CC) -o $(BFILE) $(OBJS)
 	$(call copy_build)
 
 %.o : %.cpp
@@ -44,8 +43,12 @@ clean:
 	$(RM) -f */*.o *.o
 	$(RM) -f $(BFILE) $(AFILE)
 
-.PHONY: cleanall
-cleanall:
+.PHONY: cleanAll
+cleanAll:
 	$(RM) -f */*.o *.o
 	$(RM) -f $(BFILE) $(AFILE)
 	$(RM) -f ../$(TARGET)/$(BFILE)
+
+.PHONY: run332
+run332:
+	../bin/eduardo -m 3 -c 3 -bc 2

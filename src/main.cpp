@@ -1,6 +1,7 @@
 #include "global.h"
 #include "setting.h"
 #include "infra/db.h"
+#include "infra/state.h"
 
 using namespace ai;
 
