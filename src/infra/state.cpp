@@ -17,34 +17,23 @@ void State::setData (elem_t miss, elem_t cann, bool bp){
     this->setData(side_t(miss, cann), bp);
 }
 
-void State::move2Right (side_t action){
+void State::move2Right (const side_t &action){
     this->_leftSide  -= action;
     this->_rightSide += action;
     this->_boatPosition = RIGHT;
 }
 
-void State::move2Left (side_t action){
+void State::move2Left (const side_t &action){
     this->_rightSide -= action;
     this->_leftSide  += action;
     this->_boatPosition = LEFT;
 }
 
-void State::applyAction (side_t action){
+void State::applyAction (const side_t &action){
     if( this->_boatPosition == RIGHT )
         move2Left(action);
     else
         move2Right(action);
-}
-
-bool State::canApplyAction (side_t action){
-    if( this->_boatPosition == RIGHT){
-        if( this->_rightSide >= action )
-            return true;
-    }else{
-        if( this->_leftSide >= action )
-            return true;
-    }
-    return false;
 }
 
 bool State::operator== (const State& B) const {
@@ -61,13 +50,11 @@ namespace ai {
             << state.getRightSide().first << " , " << state.getRightSide().second << " >"<<std::endl;
 
         if( state.getBoatPosition() == LEFT ){
-            out <<"___________\\______/        ___________"<<std::endl
-                <<"           |\\    /        |           "<<std::endl
+            out <<"____________\\____/        ___________"<<std::endl
                 <<"           |~\\__/~~~~~~~~~|           ";
 
         }else{
-            out <<"___________        \\______/___________"<<std::endl
-                <<"           |        \\    /|           "<<std::endl
+            out <<"____________        \\____/___________"<<std::endl
                 <<"           |~~~~~~~~~\\__/~|           ";
         }
         return out;

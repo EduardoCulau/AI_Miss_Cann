@@ -7,12 +7,12 @@
 
 namespace ai {
 
-class Database
+class Problem
 {
     public:
-        static Database* get(){
+        static Problem* get(){
             if ( !_instance ) {
-                _instance = new Database;
+                _instance = new Problem;
             }
             return _instance;
         }
@@ -23,19 +23,23 @@ class Database
 
         static const std::vector<side_t>& getAllValidActions () { return get()->_validActions; }
 
-        static void setArguments (elem_t missionaries, elem_t cannibals, elem_t boatCapacity, bool boatPosition){
-            get()->_initialState.setData(missionaries, cannibals, boatPosition);
-            get()->_goalState.setData   (missionaries, cannibals, !boatPosition);
-            get()->computeValidActions(missionaries, cannibals, boatCapacity);
-        }
+        static void setArguments (elem_t missionaries, elem_t cannibals, elem_t boatCapacity, bool boatPosition);
+
+        //Create a new state, applying a action. Don't check if the action is applicable.
+        static State Result ( const State &state, const side_t &action );
+
+        //Add one level.
+        static const elem_t StepCost ( const State &state, const side_t &action ) { return 1; }
+
+        static bool canApplyAction (const State &state, side_t &action);
 
     private:
 
         void computeValidActions(elem_t miss, elem_t cann, elem_t bc); 
 
-        static Database *_instance;
-        Database(){};
-        ~Database(){}
+        static Problem *_instance;
+        Problem(){}
+        ~Problem(){}
 
         State _initialState;
         State _goalState;

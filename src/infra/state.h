@@ -21,24 +21,21 @@ class State
             State(side_t(miss, cann), bp);
         }
 
-        //Create a new state, applying a action. Don't check if the action is applicable.
-        State(const State &origin, side_t action){
+        //Create a copy o the origin statre.
+        State(const State &origin){
             sides_t sides       = origin.getSides();
             this->_leftSide     = sides.first;
             this->_rightSide    = sides.second;
-            this->_boatPosition =  origin.getBoatPosition();
-            this->applyAction(action);
+            this->_boatPosition = origin.getBoatPosition();
         }
 
         void setData (const side_t &side, bool boatPosition);
         void setData (elem_t miss, elem_t cann, bool bp);
 
 
-        void move2Right (side_t action);
-        void move2Left (side_t action);
-
-        void applyAction (side_t action);
-        bool canApplyAction (side_t action);
+        void move2Right (const side_t &action);
+        void move2Left (const side_t &action);
+        void applyAction (const side_t &action);
 
         bool operator== (const State& B) const;
 
