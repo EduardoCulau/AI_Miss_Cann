@@ -7,6 +7,8 @@
 
 namespace ai {
 
+typedef std::deque<Node*> data_t;
+
 class Solver
 {
     public:
@@ -20,15 +22,15 @@ class Solver
         static solution_t Breadth_First_Search ();
         static solution_t Solution (const Node* node);
 
-
     private:
         static Solver *_instance;
         Solver(){}
         ~Solver(){}
 
-        std::queue<Node*> frontier;
-        std::queue<Node*> allNodes;
-        std::queue<Node*> explored;
+        static bool stateFind (const data_t& dq, const State& state);
+
+        data_t frontier;
+        data_t explored;
 
 
 };

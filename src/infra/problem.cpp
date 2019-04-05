@@ -26,19 +26,25 @@ State Problem::Result ( const State &state, const action_t &action ){
     return newState;
 }
 
+bool Problem::sideRule (const side_t &side){
+    return (side.first <= 0 || side.first >= side.second);
+}
+
 bool Problem::testRule (const sides_t &sides){
-    return (sides.first.first >= sides.first.second && sides.second.first >= sides.second.second);
+    return (sideRule(sides.first) && sideRule(sides.second));
 }
 
 bool Problem::canApplyAction (const State &state, const action_t &action){
     if( state.getBoatPosition() == RIGHT){
-        if( state.getRightSide() >= action )
+        if( state.getRightSide() >= action ){
             if( testRule( State::move2Left(state, action) ) )
                 return true;
+        }
     }else{
-        if( state.getLeftSide() >= action )
+        if( state.getLeftSide() >= action ){
             if( testRule( State::move2Right(state, action) ) )
                 return true;
+        }
     }
     return false;
 }

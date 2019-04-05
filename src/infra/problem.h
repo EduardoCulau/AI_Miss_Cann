@@ -36,6 +36,7 @@ class Problem
             return (state == get()->_goalState);
         }
 
+        inline static bool sideRule (const side_t &side);
         inline static bool testRule (const sides_t &sides);
         static bool canApplyAction (const State &state, const action_t &action);
 
@@ -43,7 +44,9 @@ class Problem
             actions_t actions;
             //Go throught all validActions.
             for(auto action : get()->_validActions){
+                std::cout <<" TESTE ACTION "<<"  < " << action.first <<" , " << action.second << " >" << std::endl;
                 if( get()->canApplyAction(state, action) ){
+                    std::cout <<"       PASSOU "<<std::endl;
                     actions.push_back(action);
                 }
             }

@@ -45,10 +45,13 @@ int main(int argc, char **argv)
 
     //Print Solution.
     std::cout << "   SOLUTION     " << std::endl;
-    for( auto action : solution ){
-      std::cout <<"< " << action.first <<" , " << action.second << " >" <<std::endl;
+    if( solution.empty() ){
+      std::cout << "NO SOLUTION  " << std::endl;
+    }else{
+      for( auto action : solution ){
+        std::cout <<"< " << action.first <<" , " << action.second << " >" <<std::endl;
+      }
     }
-
 
     return 0;
 }

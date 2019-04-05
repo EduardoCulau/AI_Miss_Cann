@@ -5,7 +5,9 @@
 
 #include <string>
 #include <vector>
-#include <queue>
+#include <deque>
+#include <algorithm>
+#include <iterator>
 
 #define RIGHT false
 #define LEFT  true
