@@ -10,7 +10,7 @@ TAG    = ctags
 CC     = g++ -std=c++11 $(OPT) $(WFLAG) $(CFLAG) -I.
 
 CC_OBJS = main.o
-INFRA_OBJS = infra/problem.o infra/state.o infra/node.o
+INFRA_OBJS = infra/state.o infra/node.o infra/problem.o infra/solver.o
 #IO_OBJS = io/io.o io/lef.o io/def.o io/rpt.o io/guide.o io/weight.o
 
 OBJS = $(CC_OBJS) $(INFRA_OBJS)

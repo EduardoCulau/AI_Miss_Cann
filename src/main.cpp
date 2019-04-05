@@ -2,6 +2,7 @@
 #include "setting.h"
 #include "infra/problem.h"
 #include "infra/state.h"
+#include "infra/solver.h"
 
 using namespace ai;
 
@@ -35,7 +36,19 @@ int main(int argc, char **argv)
    	for( auto act : Problem::getAllValidActions() ){
    		std::cout <<"< " << act.first <<" , " << act.second << " >" << " | ";
    	}
-   	std::cout << std::endl << std::endl;
+   	std::cout << std::endl << std::endl <<  std::endl;
+
+    //Solver
+    solution_t solution;
+
+    solution = Solver::Breadth_First_Search();
+
+    //Print Solution.
+    std::cout << "   SOLUTION     " << std::endl;
+    for( auto action : solution ){
+      std::cout <<"< " << action.first <<" , " << action.second << " >" <<std::endl;
+    }
+
 
     return 0;
 }

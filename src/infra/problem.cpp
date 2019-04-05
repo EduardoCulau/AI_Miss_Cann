@@ -4,7 +4,6 @@ using namespace ai;
 
 Problem *Problem::_instance = 0;
 
-
 void Problem::setArguments (elem_t missionaries, elem_t cannibals, elem_t boatCapacity, bool boatPosition){
     get()->_initialState.setData(missionaries, cannibals, boatPosition);
     get()->_goalState.setData   (missionaries, cannibals, !boatPosition);
@@ -21,19 +20,25 @@ void Problem::computeValidActions(elem_t miss, elem_t cann, elem_t bc) {
     }
 }
 
-State Problem::Result ( const State &state, const side_t &action ){
+State Problem::Result ( const State &state, const action_t &action ){
     State newState(state);
     newState.applyAction(action);
     return newState;
 }
 
-bool Problem::canApplyAction (const State &state, side_t &action){
+bool Problem::testRule (const sides_t &sides){
+    return (sides.first.first >= sides.first.second && sides.second.first >= sides.second.second);
+}
+
+bool Problem::canApplyAction (const State &state, const action_t &action){
     if( state.getBoatPosition() == RIGHT){
         if( state.getRightSide() >= action )
-            return true;
+            if( testRule( State::move2Left(state, action) ) )
+                return true;
     }else{
         if( state.getLeftSide() >= action )
-            return true;
+            if( testRule( State::move2Right(state, action) ) )
+                return true;
     }
     return false;
 }

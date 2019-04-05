@@ -33,9 +33,12 @@ class State
         void setData (elem_t miss, elem_t cann, bool bp);
 
 
-        void move2Right (const side_t &action);
-        void move2Left (const side_t &action);
-        void applyAction (const side_t &action);
+        void    move2Right  (const action_t &action);
+        void    move2Left   (const action_t &action);
+        void    applyAction (const action_t &action);
+
+        static sides_t move2Right  (const State &state, const action_t &action);
+        static sides_t move2Left   (const State &state, const action_t &action);
 
         bool operator== (const State& B) const;
 

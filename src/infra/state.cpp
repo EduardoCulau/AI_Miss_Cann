@@ -17,19 +17,35 @@ void State::setData (elem_t miss, elem_t cann, bool bp){
     this->setData(side_t(miss, cann), bp);
 }
 
-void State::move2Right (const side_t &action){
+void State::move2Right (const action_t &action){
     this->_leftSide  -= action;
     this->_rightSide += action;
     this->_boatPosition = RIGHT;
 }
 
-void State::move2Left (const side_t &action){
-    this->_rightSide -= action;
+void State::move2Left (const action_t &action){
     this->_leftSide  += action;
+    this->_rightSide -= action;
     this->_boatPosition = LEFT;
 }
 
-void State::applyAction (const side_t &action){
+
+sides_t State::move2Right  (const State &state, const action_t &action){
+    sides_t result;
+    result.first  = state.getLeftSide()  - action;
+    result.second = state.getRightSide() + action;
+    return result;
+}
+
+sides_t State::move2Left   (const State &state, const action_t &action){
+    sides_t result;
+    result.first  = state.getLeftSide()  + action;
+    result.second = state.getRightSide() - action;
+    return result;
+}
+
+
+void State::applyAction (const action_t &action){
     if( this->_boatPosition == RIGHT )
         move2Left(action);
     else
