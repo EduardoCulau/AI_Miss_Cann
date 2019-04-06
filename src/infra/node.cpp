@@ -44,3 +44,7 @@ void Node::printChieldNode(const Node* child){
 void Node::printChieldNode_End(){
     std::cout <<"}"<< std::endl << std::endl; 
 }
+
+void Node::printSolutionNode (const Node* node){
+	std::cout <<"   COST = " << node->getPathCost() << "	ACTION = " << node->getAction() << std::endl << node->getState() << std::endl << std::endl;
+}	

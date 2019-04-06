@@ -2,6 +2,7 @@
 #include "setting.h"
 #include "infra/problem.h"
 #include "infra/state.h"
+#include "infra/node.h"
 #include "infra/solver.h"
 
 using namespace ai;
@@ -44,12 +45,14 @@ int main(int argc, char **argv)
     solution = Solver::Breadth_First_Search();
 
     //Print Solution.
-    std::cout << "   SOLUTION     " << std::endl;
+    std::cout <<"-------------------------------------" << std::endl
+              <<"               SOLUTION              " << std::endl
+              <<"-------------------------------------" << std::endl << std::endl;
     if( solution.empty() ){
-      std::cout << "NO SOLUTION  " << std::endl;
+      std::cout <<"            NO SOLUTION              "<< std::endl;
     }else{
-      for( auto action : solution ){
-        std::cout << action << std::endl;
+      for( auto node : solution ){
+        Node::printSolutionNode(node);
       }
     }
 

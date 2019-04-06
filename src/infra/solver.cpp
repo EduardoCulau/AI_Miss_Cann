@@ -11,7 +11,7 @@ solution_t Solver::Breadth_First_Search (){
 
     //Inital Test.
     if( Problem::goalTest(node->getState()) ){
-        solution_t result; result.push_back(M_PAIR(0,0));
+        solution_t result; result.push_back(new Node(NULL, Problem::getGoalState(), M_PAIR(0,0), 0));
         return result; //Nothing to be done
     }
 
@@ -63,7 +63,7 @@ solution_t Solver::Solution (const Node* node){
     //Following Parrents pointes to extract all actions.
     while(node->getParent() != NULL){
         auto it = solution.begin();
-        solution.insert(it, node->getAction());
+        solution.insert(it, node);
         node = node->getParent();
     }
     return solution;

@@ -36,6 +36,7 @@ class Node
         static void printChieldNode_Start ();
         static void printChieldNode       (const Node* node);
         static void printChieldNode_End   ();
+        static void printSolutionNode     (const Node* node);
 
     private:
         Node*    _parent;

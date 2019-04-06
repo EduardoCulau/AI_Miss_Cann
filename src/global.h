@@ -21,7 +21,6 @@ typedef unsigned int 			  elem_t;
 typedef std::pair<elem_t, elem_t> side_t;
 typedef side_t                    action_t;
 typedef std::pair<side_t, side_t> sides_t;
-typedef std::vector<action_t>     solution_t;
 typedef std::vector<action_t>     actions_t;
 
 using namespace ai;
