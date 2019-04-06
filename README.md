@@ -24,11 +24,11 @@ make -j 5 -C src/ PRINT=1
 The executable has 4 parameters as following in the below table:
 
   Parameter   |         Meaning
-------------- | ----------------------
-      -m      | Number of Missionaries
-      -m      | Number of Cannibals
-      -bc     | Boat Capacity
-      -h      | Help
+------------- | -----------------------
+-m            | Number of Missionaries
+-m            | Number of Cannibals
+-bc           | Boat Capacity
+-h            | Help
 
 One example is:
 
