@@ -17,28 +17,41 @@ solution_t Solver::Breadth_First_Search (){
 
     //Add node to the fifo
     get()->frontier.push_back(node);
-    //Empty explored
+    //Empty explored.
 
     //Loop over the problem space.
     while( true ){
-        printf("New While.\n");
         if( get()->frontier.empty() ) return Solution(NULL);
+
+        //Remove from queue.
         node = get()->frontier.front(); get()->frontier.pop_front();
         get()->explored.push_back(node);
-        std::cout <<" NODO ATUAL "<< node->getPathCost() << std::endl;
-        std::cout << node->getState() << std::endl;
+
+        #ifdef PRINT_EXEC
+             Node::printCurrentNode(node);
+             Node::printChieldNode_Start();
+        #endif
+
+        //Apply all action
         for(auto action : Problem::actions(node->getState())){
             child = Node::childNode(node, action);
-            std::cout <<" NODO FILHO "<< child->getPathCost() <<"  < " << child->getAction().first <<" , " << child->getAction().second << " >" << std::endl;
-            std::cout << child->getState() << std::endl;
+
+            #ifdef PRINT_EXEC
+                Node::printChieldNode(child);
+            #endif
+
             //Test if the node is not in explored or frontier the
             if( !stateFind(get()->frontier, child->getState()) and !stateFind(get()->explored, child->getState()) ){
-                printf("Entrou, filho inedito.\n");
                 if( Problem::goalTest(child->getState()) ) return Solution(child);
                 get()->frontier.push_back(child);
+            }else{
+                child->~Node();
             }
         }
-        printf("End FOR.\n"); 
+
+        #ifdef PRINT_EXEC
+            Node::printChieldNode_End();
+        #endif
     }
 
 }

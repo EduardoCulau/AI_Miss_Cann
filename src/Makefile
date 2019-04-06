@@ -2,9 +2,11 @@
 	#Change BFILE name and change mkdir path. 
 
 WFLAG  = -Wall -Werror
-CFLAG  = 
+ifeq ($(PRINT),1)
+	CFLAG  = -DPRINT_EXEC
+endif
 TARGET = bin
-OPT    = -O3 -DNDEBUG -static
+OPT    = -O3 -static
 RM     = rm
 TAG    = ctags
 CC     = g++ -std=c++11 $(OPT) $(WFLAG) $(CFLAG) -I.
@@ -16,8 +18,8 @@ INFRA_OBJS = infra/state.o infra/node.o infra/problem.o infra/solver.o
 OBJS = $(CC_OBJS) $(INFRA_OBJS)
 
 SRCS = ${OBJS:%.o=%.cpp}
-BFILE = eduardo
-AFILE = eduardo.a
+BFILE = miss_cann
+AFILE = miss_cann.a
 
 define copy_build
 	mkdir -p ../$(TARGET)
@@ -51,4 +53,4 @@ cleanAll:
 
 .PHONY: run332
 run332:
-	../bin/eduardo -m 3 -c 3 -bc 2
+	../bin/miss_cann -m 3 -c 3 -bc 2

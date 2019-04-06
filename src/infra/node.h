@@ -16,26 +16,13 @@ class Node
             this->_action   = M_PAIR(0,0);
         }
 
-        Node(const State& state, const elem_t pathCost){
-            this->_parent = NULL;
-            this->_state  = state;
-            this->_pathCost = pathCost;
-            this->_action   = M_PAIR(0,0);
-        }
+        Node(const State& state, const elem_t pathCost);
 
-        Node(Node* parent, const State& state, const action_t& action, const elem_t pathCost){
-            this->_parent = parent;
-            this->_state  = state;
-            this->_action = action;
-            this->_pathCost = pathCost;
-        }
+        Node(Node* parent, const State& state, const action_t& action, const elem_t pathCost);
 
-        Node(Node* parent, const action_t& action){
-            this->_parent = parent;
-            this->_action = action;
-            this->_state  = Problem::Result(parent->getState(), action);
-            this->_pathCost = parent->getPathCost() + Problem::StepCost(parent->getState(), action);
-        }
+        Node(Node* parent, const action_t& action);
+
+        ~Node() {}
 
         
         const State& getState()     const{ return _state;    }
@@ -43,10 +30,12 @@ class Node
         const Node* getParent()     const{ return _parent;   }
         const action_t& getAction() const{ return _action;   }
 
-        static Node* childNode(Node* parent, const action_t& action) {
-            Node* cNode = new Node(parent, action);
-            return cNode; 
-        }
+        static Node* childNode(Node* parent, const action_t& action);
+
+        static void printCurrentNode      (const Node* node);
+        static void printChieldNode_Start ();
+        static void printChieldNode       (const Node* node);
+        static void printChieldNode_End   ();
 
     private:
         Node*    _parent;

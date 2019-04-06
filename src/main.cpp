@@ -27,14 +27,14 @@ int main(int argc, char **argv)
 
 
     std::cout <<"		INITIAL STATE		" << std::endl
-    		  <<Problem::getInitialState()   << std::endl << std::endl
+    		  << Problem::getInitialState()   << std::endl << std::endl
     		  <<"		GOAL    STATE		" << std::endl
-    		  <<Problem::getGoalState() 	  << std::endl << std::endl;
+    		  << Problem::getGoalState() 	  << std::endl << std::endl;
 
 
    	std::cout <<"		POSSIBLE ACTIONS    " << std::endl;
    	for( auto act : Problem::getAllValidActions() ){
-   		std::cout <<"< " << act.first <<" , " << act.second << " >" << " | ";
+   		std::cout << act << " | ";
    	}
    	std::cout << std::endl << std::endl <<  std::endl;
 
@@ -49,7 +49,7 @@ int main(int argc, char **argv)
       std::cout << "NO SOLUTION  " << std::endl;
     }else{
       for( auto action : solution ){
-        std::cout <<"< " << action.first <<" , " << action.second << " >" <<std::endl;
+        std::cout << action << std::endl;
       }
     }
 

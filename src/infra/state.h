@@ -42,8 +42,8 @@ class State
 
         bool operator== (const State& B) const;
 
-        inline side_t   getRightSide() const { return _rightSide; }
-        inline side_t   getLeftSide()  const { return _leftSide;  }
+        inline const side_t&   getRightSide() const { return _rightSide; }
+        inline const side_t&   getLeftSide()  const { return _leftSide;  }
         inline sides_t  getSides() const { return sides_t(_leftSide, _rightSide); };
         inline bool     getBoatPosition() const { return _boatPosition; };
 

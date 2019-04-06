@@ -62,8 +62,7 @@ bool State::operator== (const State& B) const {
 namespace ai {
 
     std::ostream& operator<< (std::ostream &out, const State& state) {
-        out <<"< " << state.getLeftSide().first << " , " << state.getLeftSide().second <<" >                   < " 
-            << state.getRightSide().first << " , " << state.getRightSide().second << " >"<<std::endl;
+        out << state.getLeftSide() <<"                   " << state.getRightSide() << std::endl;
 
         if( state.getBoatPosition() == LEFT ){
             out <<"____________\\____/        ___________"<<std::endl

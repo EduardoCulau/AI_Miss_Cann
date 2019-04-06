@@ -1,9 +1,9 @@
 #ifndef _INFRA_DB_H_
 #define _INFRA_DB_H_
 
-#include "state.h"
 #include "../global.h"
-
+#include "state.h"
+#include "node.h"
 
 namespace ai {
 
@@ -40,22 +40,12 @@ class Problem
         inline static bool testRule (const sides_t &sides);
         static bool canApplyAction (const State &state, const action_t &action);
 
-        static actions_t actions (const State &state){
-            actions_t actions;
-            //Go throught all validActions.
-            for(auto action : get()->_validActions){
-                std::cout <<" TESTE ACTION "<<"  < " << action.first <<" , " << action.second << " >" << std::endl;
-                if( get()->canApplyAction(state, action) ){
-                    std::cout <<"       PASSOU "<<std::endl;
-                    actions.push_back(action);
-                }
-            }
-            return actions;
-        }
+        static actions_t actions (const State &state);
 
     private:
 
-        void computeValidActions(elem_t miss, elem_t cann, elem_t bc); 
+        void computeValidActions(elem_t miss, elem_t cann, elem_t bc);
+ 
 
         static Problem *_instance;
         Problem(){}

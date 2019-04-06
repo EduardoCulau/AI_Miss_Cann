@@ -28,7 +28,7 @@ class Solver
         ~Solver(){}
 
         static bool stateFind (const data_t& dq, const State& state);
-
+        
         data_t frontier;
         data_t explored;
 

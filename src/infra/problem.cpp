@@ -48,3 +48,14 @@ bool Problem::canApplyAction (const State &state, const action_t &action){
     }
     return false;
 }
+
+actions_t Problem::actions (const State &state){
+    actions_t actions;
+    //Go throught all validActions.
+    for(auto action : get()->_validActions){
+        if( get()->canApplyAction(state, action) ){
+            actions.push_back(action);
+        }
+    }
+    return actions;
+}
