@@ -7,33 +7,93 @@
 
 namespace ai {
 
+/**
+ * Deque to store the Nodes pointers.
+ */
 typedef std::deque<Node*>  store_t;
+
+/**
+ * Vector of Node pointers which are the solution.
+ */
 typedef std::vector<const Node*> solution_t;
 
+
+/**
+ * Solver is a Singleton Class that defines the solver of the problem.
+ * It has argument and method like:
+ *      ° Frontier
+ *      ° Explored
+ *      ° Breadth_First_Search
+ *
+ * @author      Eduardo Culau
+ * @version     1.5
+ * @since       1.4
+ */
 class Solver
 {
-    public:
-        static Solver* get(){
-            if ( !_instance ) {
-                _instance = new Solver;
-            }
-            return _instance;
-        }        
+public:
 
-        static solution_t Breadth_First_Search ();
-        static solution_t Solution (const Node* node);
+    /**
+     * Return the current instance or create one if it don't exist.
+     *
+     * @return Solver* Setting pointer
+     */
+    static Solver* get(){
+        if ( !_instance ) {
+            _instance = new Solver;
+        }
+        return _instance;
+    }        
 
-    private:
-        static Solver *_instance;
-        Solver(){}
-        ~Solver(){}
+    /**
+     * Applies the Breadth First Search on the problem and solve it.
+     *
+     * @return solution_t solution of the problem
+     */
+    static solution_t Breadth_First_Search ();
 
-        static bool stateFind (const store_t& dq, const State& state);
+    /**
+     * Travel back to the origin to get all solution nodes.
+     *
+     * @param  node       pointer of the last node
+     * @return solution_t solution of the problem
+     */
+    static solution_t Solution (const Node* node);
 
-        store_t frontier;
-        store_t explored;
+private:
 
+    /**
+     * The single instance of the class.
+     */   
+    static Solver *_instance;
 
+    /**
+     * Private Constructor 
+     */   
+    Solver(){}
+
+    /**
+     * Private Destructor
+     */
+    ~Solver(){}
+
+    /**
+     * Applies the Breadth First Search on the problem and solve it.
+     *
+     * @param  node       pointer of the last node
+     * @return solution_t solution of the problem
+     */
+    static bool stateFind (const store_t& dq, const State& state);
+
+    /**
+     * Deque to store the Nodes* in the frontier. Used to solve the problem.
+     */  
+    store_t frontier;
+
+    /**
+     * Deque to store the Nodes* that was explored. Used to solve the problem.
+     */  
+    store_t explored;
 };
 
 }

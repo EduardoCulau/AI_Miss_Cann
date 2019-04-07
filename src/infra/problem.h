@@ -25,7 +25,7 @@ public:
     /**
      * Return the current instance or create one if it don't exist.
      *
-     * @return      Setting pointer
+     * @return Problem* Setting pointer
      */
     static Problem* get(){
         if ( !_instance ) {

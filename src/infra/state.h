@@ -68,6 +68,11 @@ public:
     }
 
     /**
+     * Destructor
+     */
+    ~State() {}
+
+    /**
      * Set the side and a boat positon to the state.
      *
      * @param  side         pair of elements <missionaries, cannibals>
