@@ -6,7 +6,13 @@ Parameterized solver of Missionaries and Cannibals Problem using Breadth First S
 
 Clone the repository, compile and run it.
 
-### Compiling
+### Clone
+
+```
+git clone https://github.com/EduardoCulau/AI_Miss_Cann.git
+```
+
+### Compile
 
 Enter the project directory and run the make command below.
 The parameter PRINT define if the program must to print the execution or not.
@@ -26,7 +32,7 @@ The executable has 4 parameters as following in the below table:
   Parameter   |         Meaning
 ------------- | -----------------------
 -m            | Number of Missionaries
--m            | Number of Cannibals
+-c            | Number of Cannibals
 -bc           | Boat Capacity
 -h            | Help
 
