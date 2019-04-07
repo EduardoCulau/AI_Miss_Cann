@@ -13,8 +13,8 @@ void State::setData (const side_t &side, bool boatPosition){
     }
 }
 
-void State::setData (elem_t miss, elem_t cann, bool bp){
-    this->setData(side_t(miss, cann), bp);
+void State::setData (elem_t miss, elem_t cann, bool boatPosition){
+    this->setData(side_t(miss, cann), boatPosition);
 }
 
 void State::move2Right (const action_t &action){
@@ -52,8 +52,8 @@ void State::applyAction (const action_t &action){
         move2Right(action);
 }
 
-bool State::operator== (const State& B) const {
-    if( this->_rightSide == B._rightSide && this->_leftSide == B._leftSide && this->_boatPosition == B._boatPosition )
+bool State::operator== (const State& otherState) const {
+    if( this->_rightSide == otherState._rightSide && this->_leftSide == otherState._leftSide && this->_boatPosition == otherState._boatPosition )
         return true;
     else
         return false;

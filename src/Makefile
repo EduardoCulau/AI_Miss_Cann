@@ -1,6 +1,3 @@
-#Modified by Eduardo at 01/18
-	#Change BFILE name and change mkdir path. 
-
 WFLAG  = -Wall -Werror
 ifeq ($(PRINT),1)
 	CFLAG  = -DPRINT_EXEC

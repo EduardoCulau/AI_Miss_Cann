@@ -4,7 +4,7 @@ using namespace ai;
 
 Problem *Problem::_instance = 0;
 
-void Problem::setArguments (elem_t missionaries, elem_t cannibals, elem_t boatCapacity, bool boatPosition){
+void Problem::setInitialState (elem_t missionaries, elem_t cannibals, elem_t boatCapacity, bool boatPosition){
     get()->_initialState.setData(missionaries, cannibals, boatPosition);
     get()->_goalState.setData   (missionaries, cannibals, !boatPosition);
     get()->computeValidActions(missionaries, cannibals, boatCapacity);
@@ -51,7 +51,7 @@ bool Problem::canApplyAction (const State &state, const action_t &action){
 
 actions_t Problem::actions (const State &state){
     actions_t actions;
-    //Go throught all validActions.
+    /* Go throught all validActions */
     for(auto action : get()->_validActions){
         if( get()->canApplyAction(state, action) ){
             actions.push_back(action);
