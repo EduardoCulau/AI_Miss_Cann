@@ -32,7 +32,7 @@ The executable has 4 parameters as following in the below table:
   Parameter   |         Meaning
 ------------- | -----------------------
 -m            | Number of Missionaries
--m            | Number of Cannibals
+-c            | Number of Cannibals
 -bc           | Boat Capacity
 -h            | Help
 
