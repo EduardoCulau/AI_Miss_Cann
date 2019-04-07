@@ -7,7 +7,7 @@
 
 namespace ai {
 
-typedef std::deque<Node*>  data_t;
+typedef std::deque<Node*>  store_t;
 typedef std::vector<const Node*> solution_t;
 
 class Solver
@@ -28,10 +28,10 @@ class Solver
         Solver(){}
         ~Solver(){}
 
-        static bool stateFind (const data_t& dq, const State& state);
+        static bool stateFind (const store_t& dq, const State& state);
 
-        data_t frontier;
-        data_t explored;
+        store_t frontier;
+        store_t explored;
 
 
 };

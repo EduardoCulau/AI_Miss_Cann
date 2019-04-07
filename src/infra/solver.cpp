@@ -69,7 +69,7 @@ solution_t Solver::Solution (const Node* node){
     return solution;
 }
 
-bool Solver::stateFind(const data_t& dq, const State& state) {
+bool Solver::stateFind(const store_t& dq, const State& state) {
     auto nodeIt = dq.begin();
     //Findo the state insede the deque.
     for( ; nodeIt != dq.end(); ++nodeIt ){
