@@ -10,6 +10,7 @@
 #include <iterator>
 #include <cstring>
 
+/* Defined by the compiler */
 //#define PRINT_EXEC
 
 namespace ai {
